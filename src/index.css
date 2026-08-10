@@ -1,0 +1,72 @@
+:root {
+  /* 색상 토큰 */
+  --color-bg: #f7f4ee;
+  --color-bg-alt: #f1ede3;
+  --color-text: #4b463f;
+  --color-text-soft: #8a8375;
+  --color-accent: #1f2a3c;
+  --color-accent-soft: #3a4a63;
+  --color-line: #d8d1c4;
+  --color-white: #ffffff;
+
+  /* 타이포그래피 토큰 */
+  --font-display: 'Nanum Myeongjo', 'Noto Serif KR', serif;
+  --font-body: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
+
+  /* 레이아웃 토큰 */
+  --content-max-width: 480px;
+  --section-padding-y: 88px;
+  --section-padding-x: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}

@@ -1,0 +1,547 @@
+/* ------------------------------------------------------------------
+   레이아웃 기본
+   ------------------------------------------------------------------ */
+
+.invitation {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background: var(--color-bg);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+@media (min-width: 540px) {
+  .invitation {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 40px rgba(31, 42, 60, 0.08);
+    border-radius: 2px;
+  }
+}
+
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  text-align: center;
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+  margin-bottom: 40px;
+}
+
+/* ------------------------------------------------------------------
+   스크롤 페이드인
+   ------------------------------------------------------------------ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   디바이더 (시그니처 오너먼트)
+   ------------------------------------------------------------------ */
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.divider__line {
+  width: 44px;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.divider__ornament {
+  font-size: 8px;
+  color: var(--color-accent);
+  transform: rotate(0deg);
+}
+
+/* ------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------ */
+
+.hero__photo-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-bg-alt);
+}
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-soft);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--color-line);
+}
+
+.hero__content {
+  padding: 56px 32px 72px;
+  text-align: center;
+}
+
+.hero__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  color: var(--color-text-soft);
+  margin-bottom: 28px;
+}
+
+.hero__names {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 34px;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.hero__amp {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text-soft);
+}
+
+.hero__date {
+  font-size: 15px;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.hero__venue {
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+/* ------------------------------------------------------------------
+   모시는 글
+   ------------------------------------------------------------------ */
+
+.greeting__body {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.greeting__line {
+  font-size: 15.5px;
+  line-height: 2.05;
+  color: var(--color-text);
+}
+
+/* ------------------------------------------------------------------
+   예식 일시 / 달력 / 카운트다운
+   ------------------------------------------------------------------ */
+
+.date-info__display {
+  font-size: 17px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.date-info__lunar {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-bottom: 44px;
+}
+
+.calendar {
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+}
+
+.calendar__month {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 10px;
+}
+
+.calendar__weekday {
+  font-size: 11px;
+  color: var(--color-text-soft);
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 8px;
+}
+
+.calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.calendar__day--target {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.countdown__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 40px;
+}
+
+.countdown__value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown__label {
+  font-size: 11px;
+  color: var(--color-text-soft);
+}
+
+/* ------------------------------------------------------------------
+   신랑 · 신부
+   ------------------------------------------------------------------ */
+
+.couple {
+  display: flex;
+  flex-direction: column;
+}
+
+.couple__person {
+  padding: 28px 0;
+}
+
+.couple__person + .couple__person {
+  border-top: 1px solid var(--color-line);
+}
+
+.couple__parents {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-bottom: 10px;
+}
+
+.couple__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+}
+
+.couple__intro {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--color-text);
+}
+
+/* ------------------------------------------------------------------
+   오시는 길
+   ------------------------------------------------------------------ */
+
+.location__venue {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.location__building {
+  font-size: 14px;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.location__address {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-bottom: 28px;
+}
+
+.location__actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  font-size: 12.5px;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--small {
+  padding: 6px 14px;
+  font-size: 11.5px;
+}
+
+.parking {
+  text-align: left;
+  max-width: 340px;
+  margin: 0 auto;
+  border-top: 1px solid var(--color-line);
+  padding-top: 28px;
+}
+
+.parking__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.parking__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.parking__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.parking__label {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.parking__desc {
+  color: var(--color-text-soft);
+  font-size: 12.5px;
+}
+
+/* ------------------------------------------------------------------
+   갤러리
+   ------------------------------------------------------------------ */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.gallery__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--color-bg-alt);
+}
+
+.gallery__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  border: 1px solid var(--color-line);
+}
+
+.gallery__hint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------
+   마음 전하실 곳
+   ------------------------------------------------------------------ */
+
+.account__notice {
+  max-width: 320px;
+  margin: 0 auto 40px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  line-height: 1.8;
+}
+
+.account__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.account-group__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.account-group__list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-line);
+}
+
+.account-item {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.account-item__summary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 14px 2px;
+  font-size: 13.5px;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.account-item__bank {
+  color: var(--color-text-soft);
+  font-size: 12.5px;
+  margin-left: 6px;
+}
+
+.account-item__chevron {
+  font-size: 15px;
+  color: var(--color-text-soft);
+  width: 18px;
+  text-align: center;
+}
+
+.account-item__detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px 16px;
+  gap: 12px;
+}
+
+.account-item__number {
+  font-size: 13.5px;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------
+   맺음말 / 푸터
+   ------------------------------------------------------------------ */
+
+.section--closing {
+  padding-bottom: 0;
+}
+
+.closing__body {
+  margin-bottom: 28px;
+}
+
+.closing__line {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+.closing__signature {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+.footer {
+  margin-top: 72px;
+  padding: 28px 32px 40px;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 11.5px;
+  color: var(--color-text-soft);
+  margin-bottom: 6px;
+}
+
+.footer__contact {
+  font-size: 11px;
+  color: var(--color-text-soft);
+}
