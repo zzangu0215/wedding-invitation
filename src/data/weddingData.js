@@ -1,7 +1,12 @@
 // ------------------------------------------------------------------
 // 청첩장 내용을 이 파일에서만 수정하면 전체 화면에 반영됩니다.
-// 이미지는 public/ 폴더에 넣고 아래 파일명만 바꿔주세요. (예: public/main.jpg)
+// 이미지는 public/photos/ 폴더에 넣고 아래 photos 항목의 파일명만 바꿔주세요.
 // ------------------------------------------------------------------
+
+// GitHub Pages처럼 하위 경로(/wedding-invitation/)에 배포해도 이미지가 깨지지 않도록
+// vite의 base 경로를 붙여줍니다. public/ 기준 경로를 앞의 '/' 없이 넘기세요.
+// 예: asset('photos/main.jpg') -> '/wedding-invitation/photos/main.jpg'
+const asset = (path) => `${import.meta.env.BASE_URL}${path}`.replace(/([^:]\/)\/+/g, '$1');
 
 const weddingData = {
   // 신랑 신부 기본 정보
@@ -117,13 +122,26 @@ const weddingData = {
   },
 
   // 사진 -------------------------------------------------------------
-  // public/ 폴더에 이미지를 넣고 파일명만 바꿔주세요.
-  // 예: public/main.jpg 를 넣었다면 mainPhoto: '/main.jpg'
-  // (아직 이미지가 없으면 null로 두면 자동으로 자리표시자가 표시됩니다)
+  // 실제 사진은 public/photos/ 에 있습니다.
+  // 원본은 프로젝트 루트 originals/ 폴더에 보관되어 있고(git 제외),
+  // public/photos/ 안의 파일들은 모바일 로딩 속도를 위해 리사이즈·압축한 버전입니다.
+  // 사진을 교체하려면 originals/ 에서 골라 같은 규격으로 변환 후 파일명을 맞춰주세요.
+  // (mainPhoto를 null로 두면 자동으로 자리표시자가 표시됩니다)
   photos: {
-    mainPhoto: null, // 예: '/main.jpg'
+    mainPhoto: asset('photos/main.jpg'),
     gallery: [
-      // 예: '/gallery-1.jpg', '/gallery-2.jpg', '/gallery-3.jpg', '/gallery-4.jpg'
+      asset('photos/gallery-01.jpg'),
+      asset('photos/gallery-02.jpg'),
+      asset('photos/gallery-03.jpg'),
+      asset('photos/gallery-04.jpg'),
+      asset('photos/gallery-05.jpg'),
+      asset('photos/gallery-06.jpg'),
+      asset('photos/gallery-07.jpg'),
+      asset('photos/gallery-08.jpg'),
+      asset('photos/gallery-09.jpg'),
+      asset('photos/gallery-10.jpg'),
+      asset('photos/gallery-11.jpg'),
+      asset('photos/gallery-12.jpg'),
     ],
   },
 

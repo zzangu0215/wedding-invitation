@@ -11,6 +11,9 @@ export default function Hero() {
             className="hero__photo"
             src={photos.mainPhoto}
             alt={`${groom.name}, ${bride.name} 커플 사진`}
+            // 첫 화면에 바로 보이는 사진이라 우선순위를 높여 받아옵니다.
+            fetchPriority="high"
+            decoding="async"
           />
         ) : (
           <div className="hero__photo hero__photo--placeholder" role="img" aria-label="대표 사진 자리표시자">

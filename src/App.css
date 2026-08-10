@@ -401,7 +401,8 @@
 
 .gallery__photo {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* 사진이 대부분 2:3 세로컷이라 정사각형으로 자르면 인물이 많이 잘려 3:4로 둡니다. */
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   background: var(--color-bg-alt);
 }

@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 촬영 원본 사진 (용량이 커서 저장소에는 올리지 않습니다)
+# 배포에 쓰이는 리사이즈 버전은 public/photos/ 에 있습니다.
+originals/
+
+# Claude Code 로컬 설정
+.claude/

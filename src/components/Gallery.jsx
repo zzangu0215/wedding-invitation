@@ -19,7 +19,15 @@ export default function Gallery() {
         <div className="gallery">
           {items.map((src, i) =>
             src ? (
-              <img key={i} className="gallery__photo" src={src} alt={`갤러리 사진 ${i + 1}`} />
+              <img
+                key={i}
+                className="gallery__photo"
+                src={src}
+                alt={`갤러리 사진 ${i + 1}`}
+                // 첫 두 장 외에는 스크롤해서 보일 때 받아오도록 해 초기 로딩을 가볍게 유지합니다.
+                loading={i < 2 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
             ) : (
               <div key={i} className="gallery__photo gallery__photo--placeholder">
                 <span>{i + 1}</span>
