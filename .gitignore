@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 촬영 원본 사진 (용량이 커서 저장소에는 올리지 않습니다)
+# 배포에 쓰이는 리사이즈 버전은 public/photos/ 에 있습니다.
+originals/
+
+# Claude Code 로컬 설정
+.claude/
