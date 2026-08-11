@@ -5,9 +5,20 @@ import weddingData from '../data/weddingData.js';
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
-function buildCalendarGrid(date) {
-  const year = date.getFullYear();
-  const month = date.getMonth();
+// 예식일은 항상 한국 시간 기준으로 읽습니다.
+// 그냥 date.getDate()를 쓰면 해외에서 열었을 때 하루 밀려 보입니다.
+function getSeoulYmd(date) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  }).formatToParts(date);
+  const get = (type) => Number(parts.find((p) => p.type === type).value);
+  return { year: get('year'), month: get('month') - 1, day: get('day') };
+}
+
+function buildCalendarGrid(year, month) {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
   const startWeekday = firstDay.getDay();
@@ -16,7 +27,7 @@ function buildCalendarGrid(date) {
   const cells = [];
   for (let i = 0; i < startWeekday; i++) cells.push(null);
   for (let d = 1; d <= totalDays; d++) cells.push(d);
-  return { cells, year, month };
+  return cells;
 }
 
 function getCountdownParts(targetDate) {
@@ -34,8 +45,8 @@ function getCountdownParts(targetDate) {
 export default function DateInfo() {
   const { wedding, features } = weddingData;
   const targetDate = new Date(wedding.dateISO);
-  const { cells, month } = buildCalendarGrid(targetDate);
-  const targetDay = targetDate.getDate();
+  const { year, month, day: targetDay } = getSeoulYmd(targetDate);
+  const cells = buildCalendarGrid(year, month);
 
   const [countdown, setCountdown] = useState(() => getCountdownParts(targetDate));
 
