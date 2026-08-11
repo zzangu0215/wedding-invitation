@@ -145,6 +145,31 @@ const weddingData = {
     ],
   },
 
+  // 거래처 송부용 간략 버전 (business.html) ----------------------------
+  // 스크롤을 최소화한 한 장짜리 안내문입니다. 예식 정보·계좌는 위 데이터를 그대로 씁니다.
+  business: {
+    // 링크 공유 시 미리보기에 뜨는 제목 (business.html의 <title>/og:title과 같이 맞춰주세요)
+    shareTitle: '프라임솔루션 부사장 박종철의 장남 결혼식',
+    // 화면 상단에 표시할 혼주 소개
+    hostLine: '프라임솔루션 부사장 박종철의 장남',
+    greeting: [
+      '저희 장남의 혼례를 알려드립니다.',
+      '바쁘신 중에도 귀한 걸음 해주시면',
+      '더없는 기쁨으로 맞이하겠습니다.',
+    ],
+    // 계좌는 위 accounts.groomSide.list 에서 이 이름과 일치하는 항목 하나만 노출합니다.
+    // (계좌번호를 여기에 또 적지 않아야 두 버전이 어긋나지 않습니다)
+    accountHolder: '박종철',
+    accountNotice: '축하의 마음을 전하고자 하시는 분들을 위해 기재하였습니다.',
+    photos: [
+      asset('photos/biz-01.jpg'),
+      asset('photos/biz-02.jpg'),
+      asset('photos/biz-03.jpg'),
+      asset('photos/biz-04.jpg'),
+      asset('photos/biz-05.jpg'),
+    ],
+  },
+
   // 기능 on/off 스위치
   features: {
     showCountdown: true,

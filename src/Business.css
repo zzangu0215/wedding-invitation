@@ -1,0 +1,180 @@
+/* ------------------------------------------------------------------
+   거래처 송부용 간략 버전 전용 스타일
+   기본 청첩장(App.css)의 색·글꼴 토큰과 .btn, .parking 은 그대로 씁니다.
+   ------------------------------------------------------------------ */
+
+.invitation--compact {
+  padding-bottom: 8px;
+}
+
+/* 사진 띠 --------------------------------------------------------- */
+
+.photo-strip {
+  background: var(--color-bg-alt);
+}
+
+.photo-strip__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.photo-strip__track::-webkit-scrollbar {
+  display: none;
+}
+
+.photo-strip__photo {
+  flex: 0 0 100%;
+  width: 100%;
+  /* 세로 스크롤을 아끼려고 기본 청첩장(4:5)보다 낮게 잡았습니다. */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  scroll-snap-align: start;
+  user-select: none;
+}
+
+.photo-strip__dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px 0 4px;
+  background: var(--color-bg);
+}
+
+.photo-strip__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-line);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.photo-strip__dot--on {
+  background: var(--color-accent);
+  transform: scale(1.25);
+}
+
+/* 머리말 ---------------------------------------------------------- */
+
+.biz-head {
+  padding: 26px 28px 0;
+  text-align: center;
+}
+
+.biz-head__host {
+  font-size: 12.5px;
+  color: var(--color-text-soft);
+  letter-spacing: 0.02em;
+}
+
+.biz-head__names {
+  margin: 10px 0 14px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.biz-head__amp {
+  margin: 0 6px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-soft);
+}
+
+.biz-head__date {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.biz-head__venue {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+
+/* 본문 ------------------------------------------------------------ */
+
+.biz-body {
+  padding: 0 28px;
+}
+
+.biz-greeting {
+  margin: 26px 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 2;
+  color: var(--color-text);
+}
+
+.biz-block {
+  text-align: center;
+}
+
+.biz-block__title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+
+.biz-block__address {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-bottom: 16px;
+}
+
+/* 간략 버전에서는 주차 안내를 더 촘촘하게 보여줍니다. */
+.invitation--compact .parking {
+  margin-top: 24px;
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+/* 계좌 ------------------------------------------------------------ */
+
+.biz-account {
+  margin-top: 30px;
+  padding: 24px 20px;
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.biz-account__notice {
+  font-size: 12.5px;
+  color: var(--color-text-soft);
+  margin-bottom: 16px;
+}
+
+.biz-account__line {
+  font-size: 15px;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
+
+.biz-account__holder {
+  margin: 4px 0 14px;
+  font-size: 12.5px;
+  color: var(--color-text-soft);
+}
+
+/* 꼬리말 ---------------------------------------------------------- */
+
+.biz-foot {
+  padding: 26px 28px 34px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--color-text-soft);
+  letter-spacing: 0.1em;
+}
