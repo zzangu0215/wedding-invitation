@@ -390,6 +390,51 @@
 }
 
 /* ------------------------------------------------------------------
+   대절 버스 안내
+   ------------------------------------------------------------------ */
+
+.shuttle__notice {
+  max-width: 320px;
+  margin: 0 auto 32px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  line-height: 1.8;
+}
+
+.shuttle__list {
+  display: flex;
+  flex-direction: column;
+  max-width: 340px;
+  margin: 0 auto;
+  border-top: 1px solid var(--color-line);
+}
+
+.shuttle__item {
+  padding: 20px 2px;
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+}
+
+.shuttle__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.shuttle__place {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.shuttle__time {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------
    갤러리
    ------------------------------------------------------------------ */
 
@@ -399,12 +444,27 @@
   gap: 8px;
 }
 
+.gallery__item {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery__item:active .gallery__photo {
+  opacity: 0.82;
+}
+
 .gallery__photo {
   width: 100%;
   /* 사진이 대부분 2:3 세로컷이라 정사각형으로 자르면 인물이 많이 잘려 3:4로 둡니다. */
   aspect-ratio: 3 / 4;
   object-fit: cover;
   background: var(--color-bg-alt);
+  transition: opacity 0.15s ease;
 }
 
 .gallery__photo--placeholder {
@@ -539,10 +599,180 @@
 .footer__copyright {
   font-size: 11.5px;
   color: var(--color-text-soft);
-  margin-bottom: 6px;
 }
 
-.footer__contact {
-  font-size: 11px;
-  color: var(--color-text-soft);
+/* ------------------------------------------------------------------
+   갤러리 크게 보기 (라이트박스)
+   ------------------------------------------------------------------ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 16px;
+  background: rgba(24, 22, 19, 0.97);
+  animation: lightbox-in 0.18s ease-out;
+  /* 스와이프가 브라우저의 뒤로가기 제스처로 새지 않게 합니다. */
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox__photo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28px;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 34px;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lightbox__nav:active {
+  color: var(--color-white);
+}
+
+.lightbox__nav--prev {
+  left: 0;
+}
+
+.lightbox__nav--next {
+  right: 0;
+}
+
+.lightbox__counter {
+  position: absolute;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   배경음악 토글
+   ------------------------------------------------------------------ */
+
+.bgm-toggle {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: rgba(247, 244, 238, 0.86);
+  color: var(--color-accent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(75, 70, 63, 0.12);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bgm-toggle:active {
+  transform: scale(0.94);
+}
+
+.bgm-toggle__icon {
+  position: relative;
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* 꺼져 있을 때는 음표에 사선을 그어 상태를 알려줍니다. */
+.bgm-toggle:not(.bgm-toggle--on) .bgm-toggle__icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.5px;
+  height: 1.4em;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 1px;
+}
+
+.bgm-toggle--on {
+  border-color: var(--color-accent-soft);
+}
+
+.bgm-toggle--on .bgm-toggle__icon {
+  animation: bgm-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bgm-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgm-toggle--on .bgm-toggle__icon {
+    animation: none;
+  }
 }

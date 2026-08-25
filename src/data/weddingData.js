@@ -88,6 +88,23 @@ const weddingData = {
     },
   ],
 
+  // 대절 버스 안내
+  shuttle: {
+    notice: '군산·익산에서 출발하는 대절 버스입니다.',
+    routes: [
+      {
+        label: '군산 출발',
+        place: '공설운동장 앞 화물 주차장',
+        time: '오전 10시 30분 출발',
+      },
+      {
+        label: '익산 출발',
+        place: '배산체육공원',
+        time: '오전 11시 출발',
+      },
+    ],
+  },
+
   // 마음 전하실 곳 (계좌 안내)
   accounts: {
     notice:
@@ -118,7 +135,12 @@ const weddingData = {
   // 푸터
   footer: {
     copyright: '© 2026 석준 & 지은. All rights reserved.',
-    contact: '청첩장 제작 문의: jneration.code@gmail.com',
+  },
+
+  // 배경음악 (public/audio/ 에 파일을 넣고 파일명만 바꿔주세요)
+  // 출처: Mixkit "Wedding Music" (Arulo) — Free Stock Music License (출처 표기 불필요)
+  audio: {
+    bgm: asset('audio/bgm.mp3'),
   },
 
   // 사진 -------------------------------------------------------------
@@ -174,6 +196,8 @@ const weddingData = {
   features: {
     showCountdown: true,
     showGallery: true,
+    showShuttle: true,
+    showBgm: true,
   },
 };
 

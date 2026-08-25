@@ -23,7 +23,6 @@ export default function Closing() {
 
       <footer className="footer">
         <p className="footer__copyright">{footer.copyright}</p>
-        <p className="footer__contact">{footer.contact}</p>
       </footer>
     </section>
   );

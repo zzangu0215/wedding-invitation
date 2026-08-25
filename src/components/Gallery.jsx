@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import FadeIn from './FadeIn.jsx';
 import Divider from './Divider.jsx';
+import Lightbox from './Lightbox.jsx';
 import weddingData from '../data/weddingData.js';
 
 export default function Gallery() {
   const { photos, features } = weddingData;
+  // null 이면 닫힌 상태, 숫자면 그 번째 사진을 크게 보고 있는 상태입니다.
+  const [openIndex, setOpenIndex] = useState(null);
 
   if (!features.showGallery) return null;
 
@@ -19,15 +23,22 @@ export default function Gallery() {
         <div className="gallery">
           {items.map((src, i) =>
             src ? (
-              <img
+              <button
                 key={i}
-                className="gallery__photo"
-                src={src}
-                alt={`갤러리 사진 ${i + 1}`}
-                // 첫 두 장 외에는 스크롤해서 보일 때 받아오도록 해 초기 로딩을 가볍게 유지합니다.
-                loading={i < 2 ? 'eager' : 'lazy'}
-                decoding="async"
-              />
+                type="button"
+                className="gallery__item"
+                onClick={() => setOpenIndex(i)}
+                aria-label={`갤러리 사진 ${i + 1} 크게 보기`}
+              >
+                <img
+                  className="gallery__photo"
+                  src={src}
+                  alt={`갤러리 사진 ${i + 1}`}
+                  // 첫 두 장 외에는 스크롤해서 보일 때 받아오도록 해 초기 로딩을 가볍게 유지합니다.
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </button>
             ) : (
               <div key={i} className="gallery__photo gallery__photo--placeholder">
                 <span>{i + 1}</span>
@@ -35,6 +46,7 @@ export default function Gallery() {
             )
           )}
         </div>
+        {hasPhotos && <p className="gallery__hint">사진을 누르면 크게 볼 수 있습니다.</p>}
         {!hasPhotos && (
           <p className="gallery__hint">
             public/ 폴더에 사진을 넣고 weddingData.js의 photos.gallery 배열에
@@ -42,6 +54,15 @@ export default function Gallery() {
           </p>
         )}
       </FadeIn>
+
+      {openIndex !== null && (
+        <Lightbox
+          photos={photos.gallery}
+          index={openIndex}
+          onClose={() => setOpenIndex(null)}
+          onIndexChange={setOpenIndex}
+        />
+      )}
     </section>
   );
 }
